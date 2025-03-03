@@ -1,0 +1,11 @@
+<h1 class="text-2xl font-bold text-center mb-6">Détails de l'entrée</h1>
+
+<div class="max-w-xl mx-auto bg-white shadow-md rounded-md p-6">
+  <p><strong>Poids :</strong> <%= @weight_entry.weight %> kg</p>
+  <p><strong>Date :</strong> <%= @weight_entry.date.strftime('%d/%m/%Y') %></p>
+
+  <div class="flex justify-between mt-6">
+    <%= link_to 'Modifier', edit_weight_entry_path(@weight_entry), class: "px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700" %>
+    <%= link_to 'Retour', weight_entries_path, class: "px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700" %>
+  </div>
+</div>
