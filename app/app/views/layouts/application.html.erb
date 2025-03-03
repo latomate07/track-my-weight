@@ -20,7 +20,16 @@
   </head>
 
   <body>
+    <%= render "shared/nav" %>
     <main class="container mx-auto mt-28 px-5">
+      <% if flash[:notice] %>
+        <div class="container mx-auto p-6">
+          <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Succès!</strong>
+            <span class="block sm:inline"><%= flash[:notice] %></span>
+          </div>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

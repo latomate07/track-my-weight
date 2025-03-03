@@ -1,0 +1,27 @@
+<header class="p-4 bg-sky-800">
+    <div class="flex justify-between container mx-auto px-6">
+        <div class="flex items-center">
+            <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <span class="text-white text-xl ml-2">Trackeur de Poids</span>
+        </div>
+        <div class="flex gap-4 items-center">
+            <a href="/" class="text-white hover:underline">Accueil</a>
+            <div class="flex items-center justify-center">
+            <% if user_signed_in? %>
+                <span class="mr-4 text-white/60"><%= current_user.email %></span> 
+                <%= button_to destroy_user_session_path, method: :delete,
+                    form: { data: { turbo_confirm: "Etes vous sûr ?" } },
+                    class: "text-white hover:bg-red-700 bg-red-500 rounded-md px-4 py-2", title: "Déconnexion" do
+                %>
+                    Déconnexion
+                <% end %>
+            <% else %> 
+                <%= link_to 'Connexion', new_user_session_path, class: "text-blue-300 hover:text-white mr-4" %> 
+                <%= link_to 'Inscription', new_user_registration_path, class: "text-blue-300 hover:text-white" %> 
+            <% end %>
+            </div>
+        </div>
+    </div>
+</header>

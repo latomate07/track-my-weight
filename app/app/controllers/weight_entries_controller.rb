@@ -3,7 +3,7 @@ class WeightEntriesController < ApplicationController
     before_action :set_weight_entry, only:[:show, :edit, :update, :destroy]
 
     def index
-        @weight_entries = WeightEntry.order(date: :desc)
+        @weight_entries = current_user.weight_entries.order(date: :desc)
     end
 
     def show
@@ -23,11 +23,11 @@ class WeightEntriesController < ApplicationController
     end
 
     def new 
-        @weight_entry = WeightEntry.new
+        @weight_entry = current_user.weight_entries.new
     end     
     
     def create 
-        @weight_entry = WeightEntry.new(weight_entry_params)
+        @weight_entry = current_user.weight_entries.new(weight_entry_params)
 
         if @weight_entry.save
             redirect_to weight_entries_path, notice: 'Votre suivi de poids a été ajouté avec succés !'
@@ -47,7 +47,7 @@ class WeightEntriesController < ApplicationController
         end
 
         def set_weight_entry
-            @weight_entry = WeightEntry.find(params[:id])
+            @weight_entry = current_user.weight_entries.find(params[:id])
         end
 
 end
